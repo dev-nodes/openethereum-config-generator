@@ -4,10 +4,10 @@ const BufferList = require('bl');
 module.exports = {
   preExampleConfig: new BufferList(`
 ---
-title: Configuring Parity Ethereum
+title: Configuring Openethereum
 ---
 
-Parity can be configured using either the [CLI options](#cli-options) or a [config file](#config-file). Should the CLI flags and the config file disagree about a setting, the CLI takes precedence.
+Openethereum can be configured using either the [CLI options](#cli-options) or a [config file](#config-file). Should the CLI flags and the config file disagree about a setting, the CLI takes precedence.
 
 You can list all CLI options by running \`$parity --help\`. The vast majority of CLI options map to a setting in the TOML file, for example \`--mode-timeout 500\` can be set by creating a config file:
 
@@ -35,7 +35,7 @@ The following is a representation of a configuration file with all default value
   preConfigDoc: new BufferList(`
 ## Presets
 
-Parity can also be launched with a [preset configuration file](https://github.com/paritytech/parity-ethereum/tree/master/parity/cli/presets) using the \`--config\` flag with one of the following values:
+Openethereum can also be launched with a [preset configuration file](https://github.com/openethereum/openethereum/tree/master/parity/cli/presets) using the \`--config\` flag with one of the following values:
   * \`dev\`: uses [dev chain specifications](Private-development-chain) with [Instant-seal](Pluggable-Consensus#instant-seal) consensus engine. The gas price is set to 0.
   * \`dev-insecure\`: uses the same configuration as \`dev\`, plus sets the flag \`no_consensus\`, allows all RPC APIs and accepts all RPC interfaces and hosts, as well as all IPFS hosts.
   * \`insecure\`: uses the Mainnet default configuration, plus sets the flag \`no_consensus\`, allows all RPC APIs and accepts all RPC interfaces and hosts, as well as all IPFS hosts.

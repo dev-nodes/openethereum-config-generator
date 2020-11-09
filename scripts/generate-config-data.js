@@ -16,7 +16,7 @@ function fetchSource () {
     return fs.readFile(path.resolve(__dirname, '../../parity/cli/mod.rs'), 'UTF-8');
   }
   return new Promise((resolve, reject) => {
-    https.get('https://raw.githubusercontent.com/paritytech/parity/master/parity/cli/mod.rs', res => {
+    https.get('https://raw.githubusercontent.com/openethereum/openethereum/master/parity/cli/mod.rs', res => {
       if (res.statusCode !== 200) {
         reject(new Error(`Failed to load source code, status code: ${res.statusCode}`));
       }
@@ -279,7 +279,7 @@ if (!module.parent) {
   // Make sure that config items with unrecognized default values
   // were set a default value in data.extra.json
     const dataAugmented = generateAugmentedData(await fetchSource(), await fetchExtraData());
-  
+
 
     Object.keys(dataAugmented).forEach(section => {
       const undefinedDefaults = Object.keys(dataAugmented[section])

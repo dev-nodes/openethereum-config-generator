@@ -29,7 +29,7 @@
   },
   "parity": {
     "section": "Parity",
-    "description": "Basic parameters regarding Parity operation.",
+    "description": "Basic parameters regarding Openethereum operation.",
     "chain": {
       "name": "Chain",
       "description": {
@@ -37,9 +37,6 @@
         "kovan": "Kovan Test Network",
         "dev": "Local Development Chain",
         "ropsten": "Ropsten Test Network",
-        "classic": "Ethereum Classic",
-        "classic-testnet": "Ethereum Classic Test Network",
-        "expanse": "Expanse Network",
         "olympic": "Olympic Network",
         "musicoin": "Musicoin Network",
         "ellaism": "Ellaism Network",
@@ -52,9 +49,6 @@
         "kovan",
         "dev",
         "ropsten",
-        "classic",
-        "classic-testnet",
-        "expanse",
         "olympic",
         "musicoin",
         "ellaism",
@@ -68,9 +62,9 @@
       "name": "Operating Mode",
       "description": {
         "last": "Uses the last-used mode, active if none",
-        "active": "Parity continously syncs the chain",
-        "passive": "Parity syncs initially, then sleeps and wakes regularly to resync",
-        "dark": "Parity syncs only when the RPC is active",
+        "active": "Openethereum continously syncs the chain",
+        "passive": "Openethereum syncs initially, then sleeps and wakes regularly to resync",
+        "dark": "Openethereum syncs only when the RPC is active",
         "offline": "Syncing is disabled (no network)"
       },
       "values": [
@@ -84,60 +78,17 @@
     },
     "mode_timeout": {
       "name": "Mode Timeout",
-      "description": "Parity will move to inactive mode after {} seconds.",
+      "description": "Openethereum will move to inactive mode after {} seconds.",
       "min": 0,
       "max": 10000,
       "condition": "settings.parity.mode !== 'active' && !isOffline"
     },
     "mode_alarm": {
       "name": "Mode Alarm",
-      "description": "Parity will automatically wake-up every {} seconds.",
+      "description": "Openethereum will automatically wake-up every {} seconds.",
       "min": 0,
       "max": 600000,
       "condition": "settings.parity.mode === 'passive'"
-    },
-    "auto_update": {
-      "name": "Auto Update",
-      "description": {
-        "all": "Auto-updates to every release",
-        "critical": "Auto-updates only to consensus/security updates",
-        "none": "No updates will be auto-installed"
-      },
-      "values": [
-        "all",
-        "critical",
-        "none"
-      ],
-      "simple": true
-    },
-    "auto_update_delay": {},
-    "auto_update_check_frequency": {},
-    "release_track": {
-      "name": "Auto Update Release Track",
-      "description": {
-        "stable": "Stable",
-        "beta": "Beta",
-        "nightly": "Nightly (unstable)",
-        "testing": "Testing (do not use)",
-        "current": "Whatever track this executable was released on"
-      },
-      "values": [
-        "stable",
-        "beta",
-        "nightly",
-        "testing",
-        "current"
-      ],
-      "condition": "settings.parity.auto_update !== 'none'",
-      "simple": true
-    },
-    "no_download": {
-      "name": "Don't Download Updates",
-      "description": "Disables auto downloading of new releases. Not recommended."
-    },
-    "no_consensus": {
-      "name": "No Consensus",
-      "description": "Forces Parity to run even if there are known issues regarding consensus. Not recommended."
     },
     "base_path": {
       "name": "Base Path",
@@ -148,7 +99,7 @@
     },
     "db_path": {
       "name": "Database Path",
-      "description": "Parity databases will be stored in {}.",
+      "description": "Openethereum databases will be stored in {}.",
       "default": "$LOCAL/chains",
       "type": "path"
     },
@@ -163,10 +114,6 @@
     },
     "no_persistent_txqueue": {
       "simple": true
-    },
-    "light": {},
-    "no_hardcoded_sync": {
-      "condition": "settings.parity.light"
     }
   },
   "account": {
@@ -186,7 +133,7 @@
     },
     "keys_iterations": {
       "name": "Keys deriving iterations",
-      "description": "Parity will do {} iterations to derive private keys from passphrase (higher=safer).",
+      "description": "Openethereum will do {} iterations to derive private keys from passphrase (higher=safer).",
       "min": 1000,
       "max": 1000000
     }
@@ -202,22 +149,22 @@
   },
   "network": {
     "section": "Networking",
-    "description": "Network and peer-related settings. Network is not available if Parity is in offline mode.",
+    "description": "Network and peer-related settings. Network is not available if Openethereum is in offline mode.",
     "condition": "!isOffline",
     "warp": {
       "name": "Warp Sync",
-      "description": "Parity will sync by downloading latest state first. Node will be operational in couple minutes."
+      "description": "Openethereum will sync by downloading latest state first. Node will be operational in couple minutes."
     },
     "warp_barrier": {
       "condition": "settings.network.warp"
     },
     "port": {
       "name": "Port",
-      "description": "Parity will listen for connections on port {}."
+      "description": "Openethereum will listen for connections on port {}."
     },
     "min_peers": {
       "name": "Min Peers",
-      "description": "Parity will try to maintain connection to at least {} peers.",
+      "description": "Openethereum will try to maintain connection to at least {} peers.",
       "default": 25,
       "min": 0,
       "max": 100000,
@@ -225,7 +172,7 @@
     },
     "max_peers": {
       "name": "Max Peers",
-      "description": "Parity will maintain at most {} peers.",
+      "description": "Openethereum will maintain at most {} peers.",
       "default": 50,
       "min": 0,
       "max": 100000,
@@ -233,22 +180,22 @@
     },
     "snapshot_peers": {
       "name": "Snapshot Sync Peers",
-      "description": "Parity will maintain additional {} peers for snapshot sync.",
+      "description": "Openethereum will maintain additional {} peers for snapshot sync.",
       "min": 0,
       "max": 100000
     },
     "max_pending_peers": {
       "name": "Max Pending Peers",
-      "description": "Parity will allow up to {} pending connections.",
+      "description": "Openethereum will allow up to {} pending connections.",
       "min": 0,
       "max": 100000
     },
     "nat": {
       "name": "NAT settings",
       "description": {
-        "any": "Parity will use all possible methods to determine public IP address.",
-        "none": "Parity won't attempt detect you public IP address",
-        "upnp": "Parity will use UPNP to detect your public IP address.",
+        "any": "Openethereum will use all possible methods to determine public IP address.",
+        "none": "Openethereum won't attempt detect you public IP address",
+        "upnp": "Openethereum will use UPNP to detect your public IP address.",
         "extip:": "Fill up the config manually and provide your public IP address."
       },
       "values": [
@@ -293,19 +240,15 @@
     "allow_ips": {
       "name": "Allow Connections",
       "description": {
-        "all": "Parity will not filter outbound connections.",
-        "private": "Parity will connect only to private network IP addresses.",
-        "public": "Parity will connect only to public network IP addresses."
+        "all": "Openethereum will not filter outbound connections.",
+        "private": "Openethereum will connect only to private network IP addresses.",
+        "public": "Openethereum will connect only to public network IP addresses."
       },
       "values": [
         "All IPs [all]",
         "Private Network [private]",
         "Public Network [public]"
       ]
-    },
-    "no_serve_light": {
-      "name": "Disable light server",
-      "description": "Disable serving light peers."
     }
   },
   "rpc": {
@@ -313,7 +256,7 @@
     "description": "Expose JSON-RPC APIs over HTTP.",
     "disable": {
       "name": "Disable JSON-RPC",
-      "description": "You won't be able to interact with Parity using JSON-RPC over HTTP."
+      "description": "You won't be able to interact with Openethereum using JSON-RPC over HTTP."
     },
     "port": {
       "name": "Port",
@@ -417,11 +360,11 @@
     "description": "Expose JSON-RPC APIs over IPC.",
     "disable": {
       "name": "Disable IPC",
-      "description": "You won't be able to use IPC to interact with Parity."
+      "description": "You won't be able to use IPC to interact with Openethereum."
     },
     "path": {
       "name": "Path",
-      "description": "Parity will create an IPC socket at {}.",
+      "description": "Openethereum will create an IPC socket at {}.",
       "default": "$HOME/.local/share/io.parity.ethereum/jsonrpc.ipc",
       "type": "path"
     },
@@ -450,7 +393,7 @@
   },
   "secretstore": {
     "section": "Secret Store (since 1.7)",
-    "description": "Secret Store. Requires a special build of Parity.",
+    "description": "Secret Store. Requires a special build of Openethereum.",
     "disable": {
       "name": "Disable Secret Store",
       "description": "You won't be able to encrypt and decrypt secrets."
@@ -479,29 +422,6 @@
       "name": "Path",
       "description": "Encrypted secrets will be stored in {}.",
       "type": "path"
-    }
-  },
-  "ipfs": {
-    "section": "IPFS API (since 1.7)",
-    "description": "IPFS-compatible API for blockchain data.",
-    "enable": {
-    },
-    "port": {
-      "name": "Port",
-      "description": "Secret Store will be running on port {}."
-    },
-    "interface": {
-      "name": "Interface",
-      "description": "Secret Store will listen for connections on IP {}."
-    },
-    "cors": {
-      "name": "CORS",
-      "description": "Allows Cross-Origin Requests from domain '{}'.",
-      "default": []
-    },
-    "hosts": {
-      "name": "Allowed Hosts",
-      "description": "Allow connections only using specified addresses."
     }
   },
   "mining": {
@@ -545,7 +465,7 @@
     },
     "work_queue_size": {
       "name": "Work Queue Size",
-      "description": "Parity will produce at most {} distinct pending blocks for miners.",
+      "description": "Openethereum will produce at most {} distinct pending blocks for miners.",
       "min": 1,
       "max": 100
     },
@@ -574,7 +494,7 @@
     },
     "price_update_period": {
       "name": "Price Update Period",
-      "description": "Parity will update price per ETH every {}."
+      "description": "Openethereum will update price per ETH every {}."
     },
     "gas_floor_target": {
       "name": "Gas Floor Target",
@@ -588,21 +508,22 @@
     },
     "tx_gas_limit": {
       "name": "Gas Limit per Transaction",
-      "description": "Parity will reject transactions above {} gas.",
+      "description": "Openethereum will reject transactions above {} gas.",
       "default": 0,
       "min": 0,
       "max": 10000000
     },
     "tx_time_limit": {
       "name": "Time Limit per Transaction [ms]",
-      "description": "Parity will start banning senders/code when execution exceeds specified limit.",
+      "description": "Openethereum will start banning senders/code when execution exceeds specified limit.",
       "default": 0,
       "min": 0,
       "max": 100000
     },
     "tx_queue_ban_count": {
       "name": "Ban After",
-      "description": "Parity will start banning senders/code when execution exceeds limit {} time(s).",
+      "description": "Openethereum will start banning senders/code when execution exceeds limit {} time(s).",
+      "default": 0,
       "min": 0,
       "max": 1000
     },
@@ -616,13 +537,14 @@
     },
     "tx_queue_ban_time": {
       "name": "Ban For",
-      "description": "Parity will ban senders/code for {} seconds.",
+      "description": "Openethereum will ban senders/code for {} seconds.",
+      "default": 0,
       "min": 0,
       "max": 10000
     },
     "tx_queue_size": {
       "name": "Transaction Queue Size",
-      "description": "Parity will keep/relay at most {} transactions in queue.",
+      "description": "Openethereum will keep/relay at most {} transactions in queue.",
       "min": 0,
       "max": 1000000
     },
@@ -679,7 +601,7 @@
   },
   "footprint": {
     "section": "Footprint",
-    "description": "Tune Parity CPU, Memory and Disk usage.",
+    "description": "Tune Openethereum CPU, Memory and Disk usage.",
     "tracing": {
       "name": "Tracing",
       "description": {
@@ -805,9 +727,11 @@
   "snapshots": {
     "section": "Snapshots",
     "description": "Snapshoting (warp sync) settings.",
-    "disable_periodic": {
-      "name": "Disable Periodic",
-      "description": "Disables automatic periodic snapshots."
+    "enable": {
+        "name": "Enable",
+        "description": "Enable snapshots",
+        "default": false,
+        "simple": true
     }
   },
   "whisper": {
